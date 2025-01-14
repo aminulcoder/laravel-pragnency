@@ -7,8 +7,8 @@
 
 
 @section('content')
-    <div class="flex flex-col gap-6 ">
-        <div class="card">
+    <div class="flex flex-col gap-6  bg-white">
+        <div class="card ">
             <div class="card-header">
                 <div class="p-6">
 

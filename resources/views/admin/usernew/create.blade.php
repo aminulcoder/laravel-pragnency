@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('breadcrumb')
-    <x-breadcrumb pageone="Admin" pageoneRoute="{{ route('admin.index') }}" pagetwo="Create" />
+    <x-breadcrumb pageone="User" pageoneRoute="{{ route('user.index') }}" pagetwo="Create" />
 @endsection
 @section('content')
     <div class="flex flex-col gap-6">
