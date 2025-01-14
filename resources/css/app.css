@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.heading-two{
+    @apply  font-semibold text-[38px] lg:text-[64px] leading-[44px] lg:leading-[82px]
+}
+.sidebaricon{
+    @apply  w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white
+}
+.btn{
+    @apply border leading-[26px] py-2 px-8 rounded-md font-normal text-gray-800 text-base hover:bg-black hover:text-white transition m-1
+}
