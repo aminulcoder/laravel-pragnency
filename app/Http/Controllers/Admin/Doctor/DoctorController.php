@@ -16,7 +16,9 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        //
+        $doctors = Doctor::latest()->paginate(10);
+        // return  $doctors;
+        return view('admin.doctor.index',compact('doctors'));
     }
 
     /**
@@ -24,7 +26,7 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        $doctors = User::latest()->paginate(10);
+        $doctors = Doctor::latest()->paginate(10);
         return view('admin.doctor.create', compact('doctors'));
     }
 
@@ -36,45 +38,25 @@ class DoctorController extends Controller
 
 
         $request->validate([
-            'name'=>'required'
+            'username'=>'required'
         ]);
-
         $data=[
-            'social_id' => $request->social_id,
             'username' => $request->username,
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
-            'name' => $request->name,
-            'age' => $request->age,
-            'social_photo' => $request->social_photo,
-            'child_number' => $request->child_number,
-            'login_type' => $request->login_type,
-            'user_type' => $request->user_type,
-            'edd_date' => $request->edd_date,
-            'edd_calculation_type' => $request->edd_calculation_type,
-            'email' => $request->email,
-            'language' => $request->language,
-            'pregnancy_loss' => $request->pregnancy_loss,
-            'pregnancy_loss_date' => $request->pregnancy_loss_date,
-            'baby_already_born' => $request->baby_already_born,
+            'designation' => $request->designation,
             'bio_data' => $request->bio_data,
-            'subscription' => $request->subscription,
-            'lmp_date' => $request->lmp_date,
-            'deleted' => $request->deleted,
-            'deleted_date' => $request->deleted_date,
-            'password' => $request->password,
-            'status' => $request->status,
+            'type' => $request->type,
+            'email' => $request->email,
 
-
-            // 'thumbnail' => $request->thumbnail,
         ];
         if($request->file('photo')){
-            $file_name = $request->file('photo')->store('photo/user');
+            $file_name = $request->file('photo')->store('photo/doctor');
             $data['photo'] = $file_name;
         }
-        User::create($data);
+        Doctor::create($data);
         Session::flash('create');
-        return redirect()->route('user.index')->with('create',' User Successfully Created');
+        return redirect()->route('doctor.index')->with('create',' Doctor Successfully Created');
     }
 
     /**
@@ -90,7 +72,8 @@ class DoctorController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $doctor = Doctor::where('id', $id)->first();
+        return view('admin.doctor.edit', compact('doctor'));
     }
 
     /**
@@ -98,7 +81,24 @@ class DoctorController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = [
+            'username'    => $request->username,
+            'first_name'  => $request->first_name,
+            'last_name'   => $request->last_name,
+            'designation' => $request->designation,
+            'bio_data'    => $request->bio_data,
+            'type'        => $request->type,
+            'email'       => $request->email,
+        ];
+        if($request->file('photo')){
+            $file_name = $request->file('photo')->store('photo/doctor');
+            $data['photo'] = $file_name;
+        }
+
+
+        Doctor::firstwhere('id', $id)->update($data);
+        Session::flash('warning');
+        return redirect()->route('doctor.index')->with('warning',' Doctor Successfully Updated');
     }
 
     /**
@@ -106,6 +106,10 @@ class DoctorController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Doctor::where('id', $id)->delete();
+        return redirect()->route('doctor.index');
     }
+
+
+
 }

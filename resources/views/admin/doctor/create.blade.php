@@ -8,42 +8,26 @@
 
 @section('content')
     <div class="flex flex-col gap-6  bg-white">
-        <div class="card ">
-            <div class="card-header">
+        <div class="card bg-white ">
+            <div class="card-header bg-white">
                 <div class="p-6">
 
                     <form action="{{ route('doctor.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <div class="grid grid-cols-12 gap-5 ">
+                        <div class="grid grid-cols-12 gap-5 bg-white ">
                             <div class="col-span-12 lg:col-span-8 bg-white dark:bg-gray-800 p-4 rounded-lg">
-                                <x-form.input label="Name" name="name" />
-                                <x-form.input label="Email" name="email" />
-                                <x-form.input label="Phone" name="phone" />
-                                <x-form.input label="Clinic" name="clinic" />
-                                <x-form.input label="Contact" name="contact" />
-                                <x-form.input label="Date of Birth" type="date" name="dob" />
+
+                                <x-form.input label="Username" name="username" />
+                                <x-form.input label="First Name" name="first_name" />
+                                <x-form.input label="Last Name" name="last_name" />
+                                <x-form.input label="Designation" name="designation" />
+                                <x-form.textarea label="Bio Data" name="bio_data" />
+                                <x-form.input label="type"  name="type" />
+                                <x-form.input label="email" type="email"  name="email" />
 
                             </div>
                             <div class="col-span-12 lg:col-span-4 bg-white dark:bg-gray-800 p-4 rounded-lg">
-                                <input class="dropify" type="file" id="myDropify" name="thumbnail">
-                                <x-form.input label="Specialization " name="specialization" />
-                                <x-form.input label="Experience(In Year) " name="experience" />
-
-
-                                <label for="Gender" class="block text-sm font-medium mb-2 dark:text-white">
-                                    Gender</label>
-
-                                <select id="Gender" name="gender"
-                                    class="js-example-basic-multiple py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                                    multiple="multiple">
-                                    <option>Select Gender</option>
-
-                                        <option value="male">male</option>
-                                        <option value="female">female</option>
-                                        <option value="other">other</option>
-
-                                </select>
-
+                                <input class="dropify" type="file" id="myDropify" name="photo">
                                 <x-form.select-status />
                             </div>
 

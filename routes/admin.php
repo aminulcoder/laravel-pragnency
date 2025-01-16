@@ -1,24 +1,21 @@
 <?php
 
-use App\Http\Controllers\Admin\Admin\RoleController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminProfileController;
+use App\Http\Controllers\Admin\Admin\RoleController;
 use App\Http\Controllers\Admin\Blog\BlogController;
-use App\Http\Controllers\Admin\DashboardController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\Doctor\DoctorapoientmentController;
 use App\Http\Controllers\Admin\Doctor\DoctorController;
 use App\Http\Controllers\Admin\EditorImageController;
-use App\Http\Controllers\Admin\Setting\AboutmeSettingController;
-use App\Http\Controllers\Admin\Setting\ChatSectionController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\Setting\ContactSettingController;
 use App\Http\Controllers\Admin\Setting\SiteSettingController;
 use App\Http\Controllers\Admin\Setting\SocialmediaSettingController;
 use App\Http\Controllers\Admin\Setting\WebsiteSettingController;
-use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
-// use App\Http\Controllers\Admin\UserController;
-
+use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('role', RoleController::class);
@@ -26,9 +23,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('blog', BlogController::class);
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('role', RoleController::class);
-    Route::resource('category',   CategoryController::class);
-    Route::resource('doctor',      DoctorController::class);
-    Route::resource('user',       UserController::class);
+    Route::resource('category', CategoryController::class);
+    Route::resource('doctor', DoctorController::class);
+    Route::get('doctorlist', [DoctorapoientmentController::class, 'doctorList'])->name('doctorlist');
+    Route::get('doctorlistid/{id}', [DoctorapoientmentController::class, 'doctorProfile'])->name('doctorprofile');
+    Route::resource('user', UserController::class);
 
     Route::get('profile/', [AdminProfileController::class, 'adminProfile'])->name('admin.profile');
     Route::put('profile/update/{id}', [AdminProfileController::class, 'UpdateAdminProfile'])->name('admin.profile.update');

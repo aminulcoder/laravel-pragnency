@@ -118,7 +118,7 @@
                     @endcanany
                     <!------------Blog end------------->
                     <!-----------Doctors start------------>
-                    @canany(['blog list', 'software list'])
+
                         <li>
                             <button type="button"
                                 class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
@@ -146,10 +146,21 @@
                                         class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Doctor</a>
                                 </li>
 
+                                <li>
+                                    <a href="{{route('doctorlist')}}"
+                                        class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Appointment </a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ route('doctor.create') }}"
+                                        class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Availability </a>
+                                </li>
+
+
                             </ul>
 
                         </li>
-                    @endcanany
+
                     <!------------Doctors end------------->
                     <!-----------User start------------>
 

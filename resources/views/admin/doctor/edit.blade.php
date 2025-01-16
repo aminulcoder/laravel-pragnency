@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('breadcrumb')
-<x-breadcrumb pageone="Category" pageoneRoute="{{route('category.index')}}" pagetwo="Edit"  />
+<x-breadcrumb pageone="Doctor" pageoneRoute="{{route('doctor.index')}}" pagetwo="Edit"  />
 @endsection
 @section('content')
 
@@ -9,24 +9,32 @@
 		<div class="card-header">
 		<div class="p-6">
 
-			<form action="{{route('category.update', $category->id)}}" method="POST" enctype="multipart/form-data">
+			<form action="{{route('doctor.update', $doctor->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                <div class="grid grid-cols-12 gap-5 ">
-                    <div class="col-span-12 lg:col-span-8 bg-white dark:bg-gray-800 p-4 rounded-lg">
-                        <x-form.input label="Category Name" name="name" value="{{$category->name}}" />
+
+                <div class="grid grid-cols-12 gap-5 bg-white ">
+                    <div class="col-span-12 lg:col-span-8 bg-white  p-4 rounded-lg">
+
+                        <x-form.input label="Username" name="username" value="{{$doctor->username}}" />
+                            <x-form.input label="First Name" name="first_name" value="{{$doctor->first_name}}" />
+                            <x-form.input label="Last Name" name="last_name" value="{{$doctor->last_name}}"/>
+                            <x-form.input label="Designation" name="designation" value="{{$doctor->designation}}"/>
+                                <x-form.textarea label="Bio Data" name="bio_data"  value="{{$doctor->bio_data}}"/>
+                            <x-form.input label="type"  name="type" value="{{$doctor->type}}"/>
+                            <x-form.input label="email"  name="email"  value="{{$doctor->email}}"/>
 
                     </div>
-                    <div class="col-span-12 lg:col-span-4 bg-white dark:bg-gray-800 p-4 rounded-lg">
-                        <div class="col-span-3 pt-1 space-y-2">
-                            <label for="thumbnail"
-                                class="text-gray-500 dark:text-gray-500 text-sm font-medium">Image</label>
-                            <input name="thumbnail" class="dropify" type="file" id="myDropify"
-                                data-default-file="{{ asset('storage/' . $category->thumbnail) }}">
-                        </div>
+                    <div class="col-span-12 lg:col-span-4 bg-white  p-4 rounded-lg">
+                        <input class="dropify" type="file" id="myDropify" name="photo" value="{{$doctor->photo}}">
+                    <x-form.select-status />
                     </div>
+
                 </div>
-                    {{-- @include('admin.inc.modal.photo-gallery') --}}
+
+
+            </div>
+
 				<x-form.submit-button title="Update" />
 		</form>
 	</div>

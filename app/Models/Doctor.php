@@ -7,19 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class Doctor extends Model
 {
      protected $fillable = [
-        'name',
+        'username',
+        'first_name',
+        'last_name',
+        'designation',
+        'bio_data',
+        'type',
         'email',
-        'phone',
-        'clinic',
-        'dob',
-        'specialization',
-        'experience',
-        'gender',
-        'address',
-        'country',
-        'city',
-        'postcode',
-        'status'
+        'password',
+        'photo',
+
     ];
 }
 
