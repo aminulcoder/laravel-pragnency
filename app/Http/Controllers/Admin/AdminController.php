@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,11 +17,11 @@ class AdminController extends Controller
      */
     public function index()
     {
-        if(!Auth::user()->can('admin list')){
-            abort(403);
-        }
+        // if(!Auth::user()->can('admin list')){
+        //     abort(403);
+        // }
 
-        $admins = User::latest()->paginate(10);
+        $admins = Admin::latest()->paginate(10);
         // return $admins;
         return view('admin.admin.index', compact('admins'));
     }
@@ -30,9 +31,9 @@ class AdminController extends Controller
      */
     public function create()
     {
-        if(!Auth::user()->can('admin create')){
-            abort(403);
-        }
+        // if(!Auth::user()->can('admin create')){
+        //     abort(403);
+        // }
         $roles = Role::all();
         return view('admin.admin.create', compact('roles'));
     }
@@ -57,7 +58,7 @@ class AdminController extends Controller
         ];
         // return $data;
         $ids = array_map('intval', $request->role_ids);
-        $user = User::create($data);
+        $user = Admin::create($data);
         $user->assignRole($ids);
         return redirect()->route('admin.index')->with('create',' Admin Successfully Created');
     }
@@ -67,9 +68,9 @@ class AdminController extends Controller
      */
     public function show(string $id)
     {
-        if(!Auth::user()->can('admin show')){
-            abort(403);
-        }
+        // if(!Auth::user()->can('admin show')){
+        //     abort(403);
+        // }
     }
 
     /**
@@ -77,10 +78,10 @@ class AdminController extends Controller
      */
     public function edit(string $id)
     {
-        if(!Auth::user()->can('admin update')){
-            abort(403);
-        }
-        $admin = User::where('id', $id)->first();
+        // if(!Auth::user()->can('admin update')){
+        //     abort(403);
+        // }
+        $admin = Admin::where('id', $id)->first();
         $roles = Role::all();
         return view('admin.admin.edit', compact('admin', 'roles'));
     }
@@ -90,11 +91,11 @@ class AdminController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        if(!Auth::user()->can('admin update')){
-            abort(403);
-        }
+        // if(!Auth::user()->can('admin update')){
+        //     abort(403);
+        // }
         $ids = array_map('intval', $request->role_ids);
-        $admin = User::firstWhere('id', $id);
+        $admin = Admin::firstWhere('id', $id);
 
         $admin->update([
             'name' => $request->name,
@@ -116,10 +117,10 @@ class AdminController extends Controller
      */
     public function destroy(string $id)
     {
-        if(!Auth::user()->can('admin delete')){
-            abort(403);
-        }
-        User::where('id', $id)->delete();
+        // if(!Auth::user()->can('admin delete')){
+        //     abort(403);
+        // }
+        Admin::where('id', $id)->delete();
         return redirect()->route('admin.index');
     }
 }

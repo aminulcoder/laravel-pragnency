@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Models\Admin;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
@@ -69,29 +69,29 @@ class PermissionSeeder extends Seeder
 
         ]);
 
-        $web = collect([]);
+        $admin = collect([]);
 
-        $permissions->map(function ($permission) use ($web) {
-            $web->push([
+        $permissions->map(function ($permission) use ($admin) {
+            $admin->push([
                 'name' => $permission['name'],
                 'module_name' => $permission['module_name'],
-                'guard_name' => 'web',
+                'guard_name' => 'admin',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
         });
 
 
-        Permission::insert($web->toArray());
+        Permission::insert($admin->toArray());
         $r = Role::create([
             'name'=>'Super Admin'
         ]);
         $permissions = Permission::pluck('id','id')->all();
         $r->syncPermissions($permissions);
 
-        $user = User::firstWhere('id',1);
+        $admin = Admin::firstWhere('id',1);
 
-        $user->assignRole(1);
+        $admin->assignRole(1);
 
     }
 }

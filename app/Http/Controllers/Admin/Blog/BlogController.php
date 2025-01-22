@@ -20,9 +20,9 @@ class BlogController extends Controller
     public function index()
     {
 
-        if(!Auth::user()->can('blog list')){
-            abort(403);
-        }
+        // if(!Auth::user()->can('blog list')){
+        //     abort(403);
+        // }
         $blogs = Blog::latest()->paginate(10);
         return view('admin.blog.blog.index', compact('blogs'));
     }
@@ -32,9 +32,9 @@ class BlogController extends Controller
      */
     public function create()
     {
-        if(!Auth::user()->can('blog create')){
-            abort(403);
-        }
+        // if(!Auth::user()->can('blog create')){
+        //     abort(403);
+        // }
         $categories = Category::get();
 
         return view('admin.blog.blog.create', compact('categories'));
@@ -101,9 +101,9 @@ class BlogController extends Controller
      */
     public function show(string $id)
     {
-        if(!Auth::user()->can('blog  show')){
-            abort(403);
-        }
+        // if(!Auth::user()->can('blog  show')){
+        //     abort(403);
+        // }
     }
 
     /**
@@ -111,9 +111,9 @@ class BlogController extends Controller
      */
     public function edit(string $id)
     {
-        if(!Auth::user()->can('blog update')){
-            abort(403);
-        }
+        // if(!Auth::user()->can('blog update')){
+        //     abort(403);
+        // }
         $blog = Blog::with('categories')->firstWhere('id', $id);
         $categories = Category::get();
 
@@ -128,9 +128,9 @@ class BlogController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        if(!Auth::user()->can('blog delete')){
-            abort(403);
-        }
+        // if(!Auth::user()->can('blog delete')){
+        //     abort(403);
+        // }
         $request->validate(
             [
                 'title'               => 'required',
@@ -183,9 +183,9 @@ class BlogController extends Controller
      */
     public function destroy(string $id)
     {
-        if(!Auth::user()->can('blog delete')){
-            abort(403);
-        }
+        // if(!Auth::user()->can('blog delete')){
+        //     abort(403);
+        // }
         $blog = Blog::findOrFail($id);
         Storage::delete($blog->thumbnail);
         $blog->delete();

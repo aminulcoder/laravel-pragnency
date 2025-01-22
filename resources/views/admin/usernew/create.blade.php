@@ -7,10 +7,8 @@
         <div class="card">
             <div class="card-header ">
                 <div class="p-6 bg-white">
-
                     <form action="{{ route('user.store') }}" method="POST">
                         @csrf
-
                         <div class="grid grid-cols-12 gap-6">
                             <div class="col-span-4">
                                 <x-form.input name="name" type="text" label="Name" />
@@ -18,58 +16,43 @@
                                 <x-form.input name="last_name" type="text" label="Last Name" />
                                 <x-form.input name="name" type="text" type="text" label="Name" />
                                 <x-form.input name="age" type="number" label="Age" />
-                                <x-form.input name="gender" label="gender" />
-                                <x-form.input name="photo" type="string" label="photo" />
-                                <x-form.input name="social_photo" type="string" label="social_photo" />
-                                <x-form.input name="child_number" type="number" label="child_number" />
-                                <x-form.input name="login_type" type="string" label="login_type" />
-                                <x-form.input name="user_type" type="string" label="user_type" />
+                                <x-form.input name="gender" label="Gender" />
+                                <x-form.input name="photo" type="text" label="Photo" />
+                                <x-form.input name="social_photo" type="text" label="Social photo" />
+                                <x-form.input name="child_number" type="number" label="Child Number" />
+                                <x-form.input name="login_type" type="text" label="Login Type" />
+                                <x-form.input name="user_type" type="text" label="User Type" />
 
                             </div>
-
-
                             <div class="col-span-4">
-
-                                <x-form.input name="edd_date" type="date" label="edd_date" />
-                                <x-form.input name="edd_calculation_type" type="text" label="edd_calculation_type" />
-                                <x-form.input name="email" type="email" label="email" />
-                                <x-form.input name="language" type="text" label="language" />
-                                <x-form.input name="pregnancy_loss" type="number" label="pregnancy_loss" />
-                                <x-form.input name="pregnancy_loss_date" type="date" label="pregnancy_loss_date" />
-                                <x-form.input name="baby_already_born" type="number" label="baby_already_born" />
-                                <x-form.input name="bio_data" type="text" label="bio_data" />
-                                <x-form.input name="country" type="text" label="country" />
-
+                                <x-form.input name="edd_date" type="date" label="Edd Date" />
+                                <x-form.input name="edd_calculation_type" type="text" label="Edd Calculation Type" />
+                                <x-form.input name="email" type="email" label="Email" />
+                                <x-form.input name="language" type="text" label="Language" />
+                                <x-form.input name="pregnancy_loss" type="number" label="Pregnancy Loss" />
+                                <x-form.input name="pregnancy_loss_date" type="date" label="Pregnancy Loss Date" />
+                                <x-form.input name="baby_already_born" type="number" label="Baby Already Born" />
+                                <x-form.textarea label="Bio Data" name="bio_data" />
+                                <x-form.input name="country" type="text" label="Country" />
                             </div>
 
                             <div class="col-span-4">
-
-                                <x-form.input name="subscription" type="text" label="subscription" />
-                                <x-form.input name="is_profile_complete" type="number" label="is_profile_complete" />
-                                <x-form.input name="lmp_date" type="date" label="lmp_date" />
-                                <x-form.input name="deleted" type="number" label="deleted" />
-                                <x-form.input name="deleted_date" type="date" label="deleted_date" />
+                                <x-form.input name="subscription" type="text" label="Subscription" />
+                                <x-form.input name="is_profile_complete" type="number" label="Is profile Complete" />
+                                <x-form.input name="lmp_date" type="date" label="Lmp Date" />
+                                <x-form.input name="deleted" type="number" label="Deleted" />
+                                <x-form.input name="deleted_date" type="date" label="Deleted Date" />
                                 <x-form.select-status />
                                 <x-form.input name="email" label="Email" type="email" />
-
                                 <x-form.input name="password" label="Password" type="password" />
                                 <x-form.input name="password_confirmation" label="Confirm Password" type="password" />
                             </div>
                         </div>
-
-
-
-
+                        <x-form.submit-button />
+                    </form>
                 </div>
-
-
-                <x-form.submit-button />
-
-                </form>
             </div>
-
         </div>
-    </div>
     </div>
 @endsection
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Admin\AdminSessionController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\Admin\RoleController;
@@ -15,7 +16,15 @@ use App\Http\Controllers\Admin\Setting\SiteSettingController;
 use App\Http\Controllers\Admin\Setting\SocialmediaSettingController;
 use App\Http\Controllers\Admin\Setting\WebsiteSettingController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\UserSearchController;
+
 use Illuminate\Support\Facades\Route;
+
+
+Route::get('admin/login', [AdminSessionController::class, 'createadmin'])->name('adminlogin');
+
+Route::post('admin/login', [AdminSessionController::class, 'store'])->name('adminstore');
+
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('role', RoleController::class);
@@ -28,6 +37,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('doctorlist', [DoctorapoientmentController::class, 'doctorList'])->name('doctorlist');
     Route::get('doctorlistid/{id}', [DoctorapoientmentController::class, 'doctorProfile'])->name('doctorprofile');
     Route::resource('user', UserController::class);
+
+    Route::get('search', [UserSearchController::class, 'searchSearch'])->name('user.search');
 
     Route::get('profile/', [AdminProfileController::class, 'adminProfile'])->name('admin.profile');
     Route::put('profile/update/{id}', [AdminProfileController::class, 'UpdateAdminProfile'])->name('admin.profile.update');
@@ -46,3 +57,4 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     });
     Route::post('editor/image/store', [EditorImageController::class, 'store'])->name('editorimagestore');
 });
+require __DIR__.'/auth.php';

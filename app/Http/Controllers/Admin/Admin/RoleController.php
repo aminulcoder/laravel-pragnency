@@ -17,9 +17,9 @@ class RoleController extends Controller
      */
     public function index()
     {
-        if(!Auth::user()->can('role list')){
-            abort(403);
-        }
+        // if(!Auth::user()->can('role list')){
+        //     abort(403);
+        // }
         $roles = Role::latest()->paginate(10);
         // return  $roles;
         return view('admin.role.index',compact('roles'));
@@ -31,9 +31,9 @@ class RoleController extends Controller
     public function create()
     {
 
-        if(!Auth::user()->can('role create')){
-            abort(403);
-        }
+        // if(!Auth::user()->can('role create')){
+        //     abort(403);
+        // }
         $roles = Role::all();
         // return $roles;
         $permissions = Permission::all()->groupBy('module_name');
@@ -63,9 +63,9 @@ class RoleController extends Controller
      */
     public function show(string $id)
     {
-        if(!Auth::user()->can('role show')){
-            abort(403);
-        }
+        // if(!Auth::user()->can('role show')){
+        //     abort(403);
+        // }
     }
 
     /**
@@ -73,9 +73,9 @@ class RoleController extends Controller
      */
     public function edit(string $id)
     {
-        if(!Auth::user()->can('role update')){
-            abort(403);
-        }
+        // if(!Auth::user()->can('role update')){
+        //     abort(403);
+        // }
         $role = Role::where('id', $id)->first();
         $roles = Role::all();
         $permissions = Permission::all()->groupBy('module_name');
@@ -90,9 +90,9 @@ class RoleController extends Controller
      */
     public function update(UpdateRoleRequest $request, Role $role)
     {
-        if(!Auth::user()->can('role update')){
-            abort(403);
-        }
+        // if(!Auth::user()->can('role update')){
+        //     abort(403);
+        // }
         $role->update(['name' => $request->validated('name')]);
         $role->syncPermissions( array_map('intval', $request->validated('permission_ids')));
         return redirect()->route('role.index')->with('warning',' Role Successfully Updated');;
@@ -103,9 +103,9 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        if(!Auth::user()->can('role delete')){
-            abort(403);
-        }
+        // if(!Auth::user()->can('role delete')){
+        //     abort(403);
+        // }
         $role->delete();
         return redirect()->route('role.index');
     }

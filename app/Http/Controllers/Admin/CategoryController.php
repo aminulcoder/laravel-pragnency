@@ -16,9 +16,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        if(!Auth::user()->can('category list')){
-            abort(403);
-        }
+        // if(!Auth::user()->can('category list')){
+        //     abort(403);
+        // }
         $categoris = Category::latest()->paginate(10);
         return view('admin.category.index', compact('categoris'));
     }
@@ -28,9 +28,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        if(!Auth::user()->can('category create')){
-            abort(403);
-        }
+        // if(!Auth::user()->can('category create')){
+        //     abort(403);
+        // }
         return view('admin.category.create');
     }
 
@@ -75,9 +75,9 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        if(!Auth::user()->can('category update')){
-            abort(403);
-        }
+        // if(!Auth::user()->can('category update')){
+        //     abort(403);
+        // }
         $category = Category::where('id', $id)->first();
         // return $category;
         return view('admin.category.edit', compact('category'));
@@ -88,9 +88,9 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        if(!Auth::user()->can('category update')){
-            abort(403);
-        }
+        // if(!Auth::user()->can('category update')){
+        //     abort(403);
+        // }
         $data = [
             'name'      => $request->name,
             'slug'      => Str::slug($request->name),
@@ -114,9 +114,9 @@ class CategoryController extends Controller
     public function destroy(string $id)
     {
 
-        if(!Auth::user()->can('category delete')){
-            abort(403);
-        }
+        // if(!Auth::user()->can('category delete')){
+        //     abort(403);
+        // }
         Category::where('id', $id)->delete();
         return redirect()->route('category.index');
     }

@@ -44,8 +44,8 @@
                     </li>
                     <!-------Dashboard End------------->
                     <!-------------Admin Start--------->
-                    @canany(['admin list', ' admin create', ' admin update', ' admin delete', 'admin show', 'role list',
-                        'role create', 'role update', 'role delete', 'role show'])
+                    {{-- @canany(['admin list', ' admin create', ' admin update', ' admin delete', 'admin show', 'role list',
+                        'role create', 'role update', 'role delete', 'role show']) --}}
                         <li>
                             <button type="button"
                                 class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
@@ -66,24 +66,24 @@
                                 </svg>
                             </button>
                             <ul id="dropdown-admins" class="hidden py-2 space-y-2">
-                                @canany(['admin list', 'admin create', ' admin update', 'admin delete', 'admin show'])
+                                {{-- @canany(['admin list', 'admin create', ' admin update', 'admin delete', 'admin show']) --}}
                                     <li>
                                         <a href="{{ route('admin.index') }}"
                                             class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">All
                                             Admin</a>
                                     </li>
-                                @endcanany
+                                {{-- @endcanany --}}
                                 <li>
                                     <a href="{{ route('role.index') }}"
                                         class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Roles</a>
                                 </li>
                             </ul>
                         </li>
-                    @endcanany
+                    {{-- @endcanany --}}
                     <!-------------Admin End----------->
 
                     <!-----------Blog start------------>
-                    @canany(['blog list', 'software list'])
+                    {{-- @canany(['blog list', 'software list']) --}}
                         <li>
                             <button type="button"
                                 class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
@@ -115,7 +115,7 @@
                             </ul>
 
                         </li>
-                    @endcanany
+                    {{-- @endcanany --}}
                     <!------------Blog end------------->
                     <!-----------Doctors start------------>
 
@@ -187,7 +187,7 @@
                             </button>
                             <ul id="dropdown-user" class="hidden py-2 space-y-2">
                                 <li>
-                                    <a href="{{ route('user.create') }}"
+                                    <a href="{{ route('user.index') }}"
                                         class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">User</a>
                                 </li>
 
@@ -198,7 +198,7 @@
                     <!------------User end------------->
 
                     <!------------Category start------->
-                    @canany(['category list'])
+                    {{-- @canany(['category list']) --}}
                         <li>
                             <a href="{{ route('category.index') }}"
                                 class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700 ">
@@ -210,7 +210,7 @@
                                 <span class="ml-3" sidebar-toggle-item>Category</span>
                             </a>
                         </li>
-                    @endcanany
+                    {{-- @endcanany --}}
 
                     <!--------------Setting start------>
                         <li>

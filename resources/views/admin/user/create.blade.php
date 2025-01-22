@@ -8,7 +8,7 @@
             <div class="card-header">
                 <div class="p-6">
 
-                    <form action="{{ route('admin.store') }}" method="POST">
+                    <form action="{{ route('user.store') }}" method="POST">
                         @csrf
                         <x-form.input name="name" label="Name" />
                         <x-form.input name="email" label="Email" type="email" />

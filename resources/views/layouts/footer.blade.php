@@ -2,7 +2,7 @@
     <!-- Grid -->
     <div class="text-center ">
       <div class="flex justify-center">
-        <a href="{{route('homepage')}}">
+        <a href="#">
             <img src="{{asset('img/footer-logo.webp')}}" alt="">
         </a>
       </div>
